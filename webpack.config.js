@@ -1,5 +1,7 @@
 var path = require("path");
 var webpack = require("webpack");
+const { VueLoaderPlugin } = require('vue-loader')
+
 module.exports={
     entry:['babel-polyfill', './src/main.js'],// 项目的入口文件
     output:{
@@ -59,7 +61,29 @@ module.exports={
                 options: {
                     name: '[name].[ext]?[hash]'
                 }
+            },
+            // vue 加载器
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        'scss': [
+                            'vue-style-loader',
+                            'css-loader',
+                            'sass-loader'
+                        ],
+                        'sass': [
+                            'vue-style-loader',
+                            'css-loader',
+                            'sass-loader?indentedSyntax'
+                        ]
+                    }
+                }
             }
         ]
-    }
+    },
+    plugins: [
+        new VueLoaderPlugin()
+    ]
 }

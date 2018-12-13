@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server  --hot",
+    "dev": "webpack-dev-server --mode development  --hot",
     "build": "webpack --progress --hide-modules"
   },
   "keywords": [
@@ -27,7 +27,9 @@
     "file-loader": "^2.0.0",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
+    "vue-loader": "^15.4.2",
     "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.5.21",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"

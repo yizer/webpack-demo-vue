@@ -1,7 +1,7 @@
 var path = require("path");
 var webpack = require("webpack");
 module.exports={
-    entry:"./src/main.js",// 项目的入口文件
+    entry:['babel-polyfill', './src/main.js'],// 项目的入口文件
     output:{
         path:path.resolve(__dirname,'./dist'),// 项目的打包文件路径
         publicPath:'/dist/', // 通过devServer访问路径
@@ -45,6 +45,20 @@ module.exports={
                     'css-loader',
                     'sass-loader?indentedSyntax'
                 ],
+            },
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                //exclude表示忽略node_modules文件夹下的文件，不用转码
+                exclude: /node_modules/
+            },
+            // 引入图片资源
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]?[hash]'
+                }
             }
         ]
     }

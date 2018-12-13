@@ -4,7 +4,9 @@
   "description": "webpack 从0搭建vue环境",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --open --hot",
+    "build": "webpack --progress --hide-modules"
   },
   "keywords": [
     "wepack",
@@ -14,5 +16,10 @@
   "license": "MIT",
   "dependencies": {
     "vue": "^2.5.21"
+  },
+  "devDependencies": {
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
   }
 }

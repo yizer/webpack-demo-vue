@@ -12,8 +12,9 @@ module.exports={
     entry:['babel-polyfill', './src/main.js'],// 项目的入口文件
     output:{
         path:path.resolve(__dirname,'./dist'),// 项目的打包文件路径
-        publicPath:'./', // 通过devServer访问路径
-        filename:'[name]-[hash].js' // 打包后的文件名
+        publicPath:'/dist/', // 通过devServer访问路径
+       // filename:'[name]-[hash].js' // 打包后的文件名
+        filename:'build.js'
     },
     // webpack-dev-server 配置项 也可以在命令行配置
     devServer:{
@@ -106,13 +107,7 @@ module.exports={
         new VueLoaderPlugin(),
         // 打包时删除dist文件
         new cleanWebpackPlugin(['dist']),
-        new htmlWebpackPlugin({
-            template:'index.html',　　//为新生成的index.html指定模版
-             minify:{ //压缩HTML文件
-                 removeComments:true,    //移除HTML中的注释
-                 collapseWhitespace:true    //删除空白符与换行符
-             }
-        }),
+  
         // 编译初期设置生产环境
         new webpack.DefinePlugin({
             'process.env': {
@@ -128,6 +123,14 @@ if (process.env.NODE_ENV === 'production') {
     module.exports.optimization ={
         minimize: true
     } ;
-    // module.exports.plugins = (module.exports.plugins || []).concat([
-    // ])
+    
+    module.exports.plugins = (module.exports.plugins || []).concat([
+        new htmlWebpackPlugin({
+            template:'index.html',　　//为新生成的index.html指定模版
+             minify:{ //压缩HTML文件
+                 removeComments:true,    //移除HTML中的注释
+                 collapseWhitespace:true    //删除空白符与换行符
+             }
+        }),
+    ])
   }

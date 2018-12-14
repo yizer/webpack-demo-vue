@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <h1>{{msg}}</h1>
-        <img :src="imgUrl" alt="">
+        <img src="./assets/img/258203-1510030RP894.jpg" alt="">
         <input type="text" v-model="msg">
     </div>
 </template>
@@ -17,7 +17,9 @@ export default {
         }
     },
     created(){
-        this.fetchData()
+        this.fetchData();
+        console.log(2333);
+        
     },
     methods:{
         async fetchData(){

@@ -9,12 +9,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const isDev = process.env.NODE_ENV === 'development'
 
 module.exports={
+    target:'web',// 默认就是web,可以不写
     entry:['babel-polyfill', './src/main.js'],// 项目的入口文件
     output:{
         path:path.resolve(__dirname,'./dist'),// 项目的打包文件路径
-        publicPath:'/dist/', // 通过devServer访问路径
-       // filename:'[name]-[hash].js' // 打包后的文件名
-        filename:'build.js'
+        //publicPath:'/dist/', // 通过devServer访问路径
+         filename:'[name]-[hash].js' // 打包后的文件名
+        //filename:'build.js'
     },
     // webpack-dev-server 配置项 也可以在命令行配置
     devServer:{
@@ -114,6 +115,14 @@ module.exports={
             NODE_ENV: isDev ? '"development"' : '"production"'
             }
         }),
+        new htmlWebpackPlugin({
+            template:'index.html',　　//为新生成的index.html指定模版
+            filename:'index.html',
+             minify:{ //压缩HTML文件
+                 removeComments:true,    //移除HTML中的注释
+                 collapseWhitespace:true    //删除空白符与换行符
+             }
+        }),
     ]
 }
 
@@ -125,12 +134,6 @@ if (process.env.NODE_ENV === 'production') {
     } ;
     
     module.exports.plugins = (module.exports.plugins || []).concat([
-        new htmlWebpackPlugin({
-            template:'index.html',　　//为新生成的index.html指定模版
-             minify:{ //压缩HTML文件
-                 removeComments:true,    //移除HTML中的注释
-                 collapseWhitespace:true    //删除空白符与换行符
-             }
-        }),
+
     ])
   }

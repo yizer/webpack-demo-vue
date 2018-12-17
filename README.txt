@@ -1,3 +1,4 @@
+有道云笔记: http://note.youdao.com/noteshare?id=42fb7f0fcfbfe35fc5cabba760b300d6
 参考文档:1 webpack 4中文文档 https://www.webpackjs.com/concepts/
  2 vue项目从0搭建(webpack手动搭建)
  https://segmentfault.com/a/1190000012789253

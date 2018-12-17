@@ -18,13 +18,13 @@ export default {
     },
     created(){
         this.fetchData();
-        console.log(2333);
+        console.log(2333123);
         
     },
     methods:{
         async fetchData(){
             const data = await getData();
-            this.msg = data;
+            this.msg = data+"222";
         }
     }
 }
